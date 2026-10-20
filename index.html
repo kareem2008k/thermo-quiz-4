@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0c1830" />
+  <meta name="description" content="مراجعة تفاعلية في Thermodynamics: Perfect Gas, Processes, Steam Tables — With Eng Kareem" />
+  <title>Thermodynamics Review | With Eng Kareem</title>
+  <style>
+    :root{
+      --navy:#172b43;
+      --navy-2:#243c55;
+      --teal:#167b72;
+      --teal-dark:#11655e;
+      --teal-pale:#edf7f5;
+      --ink:#263544;
+      --muted:#667483;
+      --paper:#f5f7f8;
+      --line:#dfe5e9;
+      --white:#fff;
+      --red:#a92d3c;
+      --green:#126c4e;
+      --gold:#b17c27;
+      --radius:14px;
+      --shadow:0 2px 10px rgba(24,43,62,.04);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+    body{margin:0;background:var(--paper);color:var(--ink);font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Tahoma,Arial,sans-serif;font-size:15px;line-height:1.8;overflow-wrap:break-word}
+    button,input{font:inherit}
+    button{cursor:pointer;touch-action:manipulation}
+    button:focus-visible,input:focus-visible,summary:focus-visible{outline:3px solid #83bdb6;outline-offset:2px}
+    .topbar{background:var(--navy);color:#fff;padding:12px clamp(14px,3vw,38px);display:flex;align-items:center;justify-content:space-between;gap:14px;border-bottom:3px solid var(--teal)}
+    .brand{display:flex;align-items:center;gap:10px;min-width:0}
+    .brand-mark{width:38px;height:38px;border:1px solid #7d91a6;border-radius:8px;background:transparent;display:grid;place-items:center;color:#fff;font-weight:800;font-size:17px;flex:0 0 auto}
+    .brand-name{font-size:13px;letter-spacing:1.3px;font-weight:800;line-height:1.3;direction:ltr;text-align:left}
+    .brand-sub{font-size:11px;color:#d0dae3;letter-spacing:.1px;margin-top:3px}
+    .top-chip{font-size:12px;color:#d8e1e9;border:1px solid #53677b;padding:5px 10px;border-radius:6px;white-space:nowrap}
+    .hero{margin:20px auto 18px;max-width:1380px;padding:0 clamp(14px,3vw,34px)}
+    .hero-inner{position:relative;overflow:hidden;background:var(--white);border:1px solid var(--line);border-right:4px solid var(--teal);border-radius:var(--radius);padding:clamp(20px,3vw,34px);color:var(--ink);box-shadow:var(--shadow)}
+    .hero-inner:after{content:none}
+    .eyebrow{font-size:11px;font-weight:800;letter-spacing:1.6px;color:var(--teal-dark);direction:ltr;text-align:right}
+    h1{font-size:clamp(24px,3vw,36px);line-height:1.4;margin:9px 0 8px;max-width:850px;color:var(--navy);letter-spacing:-.3px}
+    .hero p{max-width:780px;color:#586775;margin:0;font-size:14px}
+    .hero-actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:18px;position:relative;z-index:1}
+    .btn{border:1px solid transparent;border-radius:8px;padding:9px 15px;min-height:44px;font-weight:750;font-size:13px;transition:background .15s,border-color .15s;display:inline-flex;align-items:center;justify-content:center;gap:6px}
+    .btn:hover{filter:brightness(.97)}
+    .btn-primary{background:var(--teal);color:#fff}
+    .btn-primary:hover{background:var(--teal-dark)}
+    .btn-light{background:#fff;border-color:var(--line);color:var(--navy)}
+    .btn-outline{background:#fff;border-color:#aab8c3;color:var(--navy)}
+    .layout{max-width:1380px;margin:0 auto;padding:0 clamp(14px,3vw,34px) 36px;display:grid;grid-template-columns:minmax(0,1fr) 270px;gap:20px;align-items:start}
+    .sidebar{grid-column:2;position:sticky;top:14px;grid-row:1;min-width:0}
+    .content{grid-column:1;grid-row:1;min-width:0}
+    .side-card,.panel{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
+    .side-card{padding:14px}
+    .side-title{font-size:12px;letter-spacing:.2px;color:var(--muted);font-weight:800;margin:0 0 10px}
+    .nav-list{display:grid;gap:3px}
+    .nav-btn{display:flex;align-items:center;gap:9px;text-align:right;padding:8px 9px;background:transparent;border:1px solid transparent;border-radius:7px;color:#465666;width:100%;min-height:42px;font-size:12px;font-weight:650;line-height:1.45}
+    .nav-btn:hover{background:#f6f8f9}
+    .nav-num{display:grid;place-items:center;min-width:27px;height:27px;border-radius:6px;background:#f0f3f5;color:#526474;font-size:11px;font-weight:800;direction:ltr}
+    .nav-btn.active{background:var(--teal-pale);border-color:#d1e7e3;color:#145e57}
+    .nav-btn.active .nav-num{background:var(--teal);color:#fff}
+    .progress-wrap{margin-top:14px;padding-top:14px;border-top:1px solid var(--line)}
+    .progress-label{display:flex;justify-content:space-between;gap:8px;color:var(--muted);font-size:11px;margin-bottom:7px}
+    .progress-track{height:5px;border-radius:999px;background:#edf0f2;overflow:hidden}
+    .progress-fill{height:100%;width:0;background:var(--teal);border-radius:999px;transition:width .2s}
+    .note-mini{margin-top:12px;background:#f7f9fa;border-right:3px solid #c6d5d9;border-radius:5px;padding:10px;font-size:11px;color:var(--muted)}
+    .page{display:none;animation:appear .16s ease}
+    .page.active{display:block}
+    @keyframes appear{from{opacity:.5}to{opacity:1}}
+    .panel{padding:clamp(18px,2.5vw,30px);box-shadow:none}
+    .page-head{display:flex;align-items:flex-start;gap:13px;margin-bottom:20px}
+    .page-icon{width:44px;height:44px;border-radius:9px;background:var(--teal-pale);border:1px solid #d9eae7;color:var(--teal-dark);display:grid;place-items:center;font-size:19px;font-weight:800;flex:0 0 auto}
+    .page-kicker{font-size:10px;letter-spacing:1.1px;font-weight:800;color:var(--teal-dark);direction:ltr;text-align:right}
+    h2{font-size:clamp(21px,2.2vw,28px);line-height:1.45;margin:3px 0 5px;color:var(--navy);letter-spacing:-.2px}
+    .page-desc{color:var(--muted);font-size:13px;margin:0;line-height:1.7}
+    h3{font-size:16px;line-height:1.5;margin:0 0 9px;color:var(--navy)}
+    p{margin:8px 0 13px}
+    .grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:16px 0}
+    .grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:16px 0}
+    .soft-card{background:#fff;border:1px solid var(--line);padding:15px;border-radius:10px;min-width:0}
+    .soft-card p:last-child{margin-bottom:0}
+    .formula{direction:ltr;text-align:center;background:var(--navy);color:#fff;border-radius:8px;padding:13px 10px;margin:12px 0;font-size:clamp(17px,1.8vw,22px);font-weight:750;letter-spacing:0;overflow-wrap:anywhere;word-break:normal;line-height:1.5}
+    .formula small{display:block;color:#d4e0e9;font-size:10px;font-weight:500;letter-spacing:0;margin-top:2px}
+    .formula.light{background:var(--teal-pale);color:#145e57;border:1px solid #d4e9e5}
+    .tag{display:inline-block;background:#f1f4f6;border:1px solid #e0e6ea;color:#455665;border-radius:5px;padding:2px 7px;font-size:11px;font-weight:750;margin:2px}
+    .tip{border-right:3px solid var(--teal);background:#f1f8f7;border-radius:6px;padding:11px 13px;margin:15px 0;font-size:13px;color:#355955}
+    .caution{border-right:3px solid var(--gold);background:#fcf8f0;border-radius:6px;padding:11px 13px;margin:15px 0;font-size:13px;color:#725b32}
+    .answer-box{border:1px solid var(--line);background:#fff;border-radius:10px;margin-top:18px;overflow:hidden}
+    .answer-box summary{cursor:pointer;padding:13px 14px;font-weight:750;color:#264758;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:10px;line-height:1.65;min-height:48px}
+    .answer-box summary::-webkit-details-marker{display:none}
+    .answer-box summary:after{content:"＋";font-size:17px;color:var(--teal);flex:0 0 auto}
+    .answer-box[open] summary:after{content:"−"}
+    .answer-content{padding:2px 14px 14px;border-top:1px solid #e7ecef;font-size:13px}
+    .steps{counter-reset:step;display:grid;gap:8px;padding:0;margin:12px 0;list-style:none}
+    .steps li{position:relative;padding:10px 43px 10px 10px;background:#fafbfc;border:1px solid #e8ecef;border-radius:8px;min-width:0}
+    .steps li:before{counter-increment:step;content:counter(step);position:absolute;right:10px;top:10px;background:var(--navy-2);color:#fff;width:24px;height:24px;border-radius:6px;display:grid;place-items:center;font-size:11px;font-weight:800;direction:ltr}
+    .mathline{direction:ltr;text-align:left;font-family:ui-monospace,SFMono-Regular,Consolas,"Liberation Mono",monospace;font-size:.94em;font-weight:650;color:#174f50;background:#f1f7f6;border-radius:5px;padding:5px 8px;margin:5px 0;overflow-wrap:anywhere;max-width:100%}
+    .table-wrap{overflow-x:auto;overscroll-behavior-x:contain;border-radius:8px;border:1px solid var(--line);margin:13px 0;max-width:100%;-webkit-overflow-scrolling:touch}
+    table{border-collapse:collapse;width:100%;min-width:460px;background:#fff;font-size:12px}
+    th,td{padding:9px 10px;text-align:center;border-bottom:1px solid var(--line)}
+    th{background:#f2f5f6;color:#314960;font-weight:800}
+    tr:last-child td{border-bottom:0}
+    .diagram{background:#fff;border:1px solid var(--line);border-radius:10px;padding:10px;margin:16px 0;text-align:center;min-width:0}
+    .diagram svg{width:100%;max-width:690px;height:auto;display:block;margin:0 auto}
+    .diagram figcaption{font-size:11px;color:var(--muted);margin-top:7px}
+    .formula-row{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+    .formula-row .formula{font-size:17px;margin:0}
+    .page-footer{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:19px;padding-top:15px;border-top:1px solid var(--line)}
+    .page-footer small{color:var(--muted);font-size:11px}
+    .pager{display:flex;gap:7px}
+    .pager button{border:1px solid #d6dfe4;background:#fff;border-radius:7px;padding:8px 12px;min-height:42px;color:var(--navy);font-weight:750;font-size:12px}
+    .pager button:hover:not(:disabled){background:#f5f8f9}
+    .pager button:disabled{opacity:.35;cursor:not-allowed}
+    .quiz-q{border:1px solid var(--line);border-radius:10px;padding:13px;margin:12px 0;background:#fff;min-width:0}
+    .quiz-q legend{font-weight:750;color:var(--navy);padding:0 4px;line-height:1.8}
+    .question-top{display:flex;align-items:flex-start;gap:10px}
+    .q-num{flex:0 0 auto;width:27px;height:27px;display:inline-grid;place-items:center;background:var(--teal-pale);color:var(--teal-dark);border-radius:6px;font-weight:800;direction:ltr}
+    .q-title{font-weight:750;font-size:13px;margin:0}
+    .options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;margin-top:12px}
+    .option{display:flex;align-items:flex-start;gap:9px;border:1px solid #e0e6ea;border-radius:7px;padding:10px;min-height:44px;cursor:pointer;font-size:13px;line-height:1.6;transition:background .12s,border-color .12s;min-width:0}
+    .option:hover{background:#f9fbfb}
+    .option:has(input:checked){background:var(--teal-pale);border-color:#90c8bf}
+    .option input{accent-color:var(--teal);margin-top:5px;flex:0 0 auto;width:16px;height:16px}
+    .feedback{display:none;border-radius:7px;padding:10px 11px;margin-top:10px;font-size:12px;line-height:1.7}
+    .feedback.show{display:block}
+    .feedback.correct{background:#eff8f3;color:#195e45;border:1px solid #cee7d8}
+    .feedback.wrong{background:#fcf2f2;color:#8d3340;border:1px solid #ecd0d3}
+    .quiz-actions{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-top:17px}
+    .score{font-weight:800;color:var(--navy);font-size:13px}
+    .footnote{font-size:11px;color:var(--muted)}
+    .welcome-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:18px}
+    .welcome-tile{border:1px solid var(--line);border-top:2px solid #8fbdb7;background:#fff;border-radius:8px;padding:13px;min-width:0}
+    .welcome-tile b{display:block;font-size:13px;margin-bottom:4px;color:var(--navy)}
+    .welcome-tile span{display:block;font-size:12px;color:var(--muted);line-height:1.65}
+    .brand-footer{text-align:center;color:#81909c;font-size:10px;margin:15px auto 0;direction:ltr;padding:0 12px 18px;letter-spacing:.5px}
+    .hidden{display:none!important}
+    @media(max-width:1050px){
+      .layout{grid-template-columns:minmax(0,1fr);gap:12px}
+      .sidebar,.content{grid-column:1;grid-row:auto}
+      .sidebar{position:static}
+      .nav-list{display:flex;gap:5px;overflow-x:auto;padding:0 0 4px;scrollbar-width:thin;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch}
+      .nav-btn{flex:0 0 auto;width:auto;white-space:nowrap;padding:7px 9px}
+      .side-card{padding:10px 11px}
+      .side-title{margin-bottom:7px}
+      .note-mini{display:none}
+    }
+    @media(max-width:650px){
+      body{font-size:14px;line-height:1.75}
+      .topbar{padding:10px 13px;gap:8px}
+      .brand{gap:8px}
+      .brand-mark{width:34px;height:34px;border-radius:7px;font-size:15px}
+      .brand-name{font-size:11px;letter-spacing:1px}
+      .brand-sub{font-size:10px}
+      .top-chip{display:none}
+      .hero{margin:12px auto 12px;padding:0 12px}
+      .hero-inner{padding:18px 16px;border-radius:10px}
+      .eyebrow{font-size:10px;letter-spacing:1px}
+      h1{font-size:24px;line-height:1.5;margin:8px 0}
+      .hero p{font-size:13px;line-height:1.75}
+      .hero-actions{display:grid;grid-template-columns:1fr;gap:7px;margin-top:14px}
+      .hero-actions .btn{width:100%}
+      .welcome-cards{grid-template-columns:1fr;gap:7px;margin-top:14px}
+      .welcome-tile{padding:10px 12px;display:grid;grid-template-columns:minmax(0,1fr);gap:1px}
+      .welcome-tile b{font-size:12px;margin-bottom:0}
+      .welcome-tile span{font-size:11px}
+      .layout{padding:0 12px 22px;gap:10px}
+      .side-card{padding:9px;border-radius:9px}
+      .side-title{font-size:11px}
+      .nav-list{margin-left:-1px;margin-right:-1px;gap:4px}
+      .nav-btn{font-size:11px;min-height:40px;padding:6px 8px;gap:6px;border-radius:6px}
+      .nav-num{min-width:23px;height:23px;font-size:10px;border-radius:5px}
+      .progress-wrap{margin-top:8px;padding-top:8px}
+      .progress-label{font-size:10px;margin-bottom:5px}
+      .panel{padding:15px 13px;border-radius:10px}
+      .page-head{gap:10px;margin-bottom:16px}
+      .page-icon{width:38px;height:38px;border-radius:7px;font-size:16px}
+      .page-kicker{font-size:9px;letter-spacing:.7px}
+      h2{font-size:20px;line-height:1.5}
+      .page-desc{font-size:12px}
+      h3{font-size:15px}
+      .grid-2,.grid-3,.formula-row{grid-template-columns:minmax(0,1fr);gap:9px;margin:12px 0}
+      .soft-card{padding:12px;border-radius:8px}
+      .formula{font-size:17px;padding:11px 8px;border-radius:7px;margin:10px 0;white-space:normal}
+      .formula-row .formula{font-size:16px}
+      .tag{font-size:10px}
+      .tip,.caution{font-size:12px;padding:9px 10px;margin:12px 0}
+      .answer-box{margin-top:14px}
+      .answer-box summary{font-size:12px;padding:11px 10px;min-height:46px}
+      .answer-content{font-size:12px;padding:2px 10px 11px}
+      .steps{gap:7px}
+      .steps li{padding:9px 39px 9px 8px;font-size:12px}
+      .steps li:before{right:8px;top:9px;width:23px;height:23px}
+      .mathline{font-size:12px;padding:5px 6px}
+      .table-wrap{border-radius:7px}
+      table{min-width:440px;font-size:11px}
+      th,td{padding:8px 7px}
+      .diagram{padding:7px;border-radius:8px}
+      .diagram figcaption{font-size:10px}
+      .page-footer{align-items:stretch;flex-direction:column;gap:10px;margin-top:16px;padding-top:12px}
+      .pager{width:100%;display:grid;grid-template-columns:1fr 1fr}
+      .pager button{width:100%;min-height:44px}
+      .quiz-q{padding:10px;margin:10px 0;border-radius:8px}
+      .quiz-q legend{font-size:12px;line-height:1.8}
+      .options{grid-template-columns:minmax(0,1fr);gap:6px;margin-top:10px}
+      .option{font-size:12px;padding:10px;min-height:44px}
+      .feedback{font-size:12px}
+      .quiz-actions{display:grid;grid-template-columns:1fr;gap:7px}
+      .quiz-actions .btn{width:100%}
+      .score{display:block;padding:3px 0}
+      .brand-footer{font-size:9px;margin-top:10px}
+    }
+    @media(max-width:360px){
+      .hero-inner{padding:15px 12px}
+      h1{font-size:22px}
+      .layout{padding-left:9px;padding-right:9px}
+      .nav-btn{font-size:10px;padding:6px 7px}
+      .panel{padding:12px 10px}
+      .formula{font-size:15px}
+      .page-head{gap:8px}
+      h2{font-size:18px}
+    }
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.page{animation:none}.progress-fill{transition:none}}
+    @media print{body{background:#fff}.topbar,.hero-actions,.sidebar,.page-footer,.quiz-actions{display:none!important}.hero{margin:0;padding:0}.hero-inner{border-radius:0;box-shadow:none;background:#fff;color:#000;padding:14px;border:0}.hero p{color:#333}.layout{display:block;padding:0}.page{display:block!important;page-break-after:always}.panel{box-shadow:none;border:0;padding:0}.formula{background:#eee;color:#000}.brand-footer{display:block}}
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-mark">K</div>
+      <div>
+        <div class="brand-name">WITH ENG KAREEM</div>
+        <div class="brand-sub">Thermodynamics • Lecture 04</div>
+      </div>
+    </div>
+    <div class="top-chip">Lecture 04 · Board notes</div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="eyebrow">THERMODYNAMICS • LECTURE 04</div>
+      <h1>راجع صفحة بصفحة، وافهم القانون قبل ما تحفظه.</h1>
+      <p>ملخص تفاعلي مرتب حسب الصبورة: Perfect Gas، والعمليات الحرارية، وحالات البخار وجداول الخواص. كل جزء فيه شرح مختصر ومثال بإجابة مفسرة، وفي النهاية كويز للتأكد من الفهم.</p>
+      <div class="hero-actions">
+        <button class="btn btn-primary" data-go="perfect-gas">ابدأ المراجعة ←</button>
+        <button class="btn btn-outline" data-go="quiz">اذهب إلى الكويز</button>
+      </div>
+      <div class="welcome-cards">
+        <div class="welcome-tile"><b>01 · Perfect Gas</b><span>القانون العام، الثوابت، والخواص الحرارية.</span></div>
+        <div class="welcome-tile"><b>02 · Processes</b><span>تمييز نوع العملية من الخاصية الثابتة.</span></div>
+        <div class="welcome-tile"><b>03 · Steam</b><span>تحديد المنطقة واستخراج الخواص من الجداول.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <main class="layout">
+    <aside class="sidebar">
+      <div class="side-card">
+        <p class="side-title">خريطة المراجعة</p>
+        <nav class="nav-list" aria-label="أقسام المراجعة">
+          <button class="nav-btn" data-page="welcome"><span class="nav-num">00</span><span>بداية وخطة المراجعة</span></button>
+          <button class="nav-btn active" data-page="perfect-gas"><span class="nav-num">01</span><span>Perfect Gas</span></button>
+          <button class="nav-btn" data-page="heat-energy"><span class="nav-num">02</span><span>Heat & Energy</span></button>
+          <button class="nav-btn" data-page="processes"><span class="nav-num">03</span><span>Processes</span></button>
+          <button class="nav-btn" data-page="steam-states"><span class="nav-num">04</span><span>Steam Curve & States</span></button>
+          <button class="nav-btn" data-page="steam-tables"><span class="nav-num">05</span><span>Steam Tables</span></button>
+          <button class="nav-btn" data-page="quality"><span class="nav-num">06</span><span>Quality & Mixture</span></button>
+          <button class="nav-btn" data-page="worked-examples"><span class="nav-num">07</span><span>Examples with Why</span></button>
+          <button class="nav-btn" data-page="quiz"><span class="nav-num">08</span><span>Final Quiz</span></button>
+        </nav>
+        <div class="progress-wrap">
+          <div class="progress-label"><span>تقدم المراجعة</span><b id="progressText">2 / 9</b></div>
+          <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+        </div>
+        <div class="note-mini">نصيحة: حل المثال بنفسك الأول، وبعدها افتح الإجابة وشوف سبب اختيار القانون.</div>
+      </div>
+    </aside>
+
+    <div class="content">
+      <section class="page" id="welcome" data-title="بداية وخطة المراجعة">
+        <div class="panel">
+          <div class="page-head"><div class="page-icon">✓</div><div><div class="page-kicker">START HERE</div><h2>إزاي تستخدم الملف؟</h2><p class="page-desc">الترتيب مقصود: افهم القانون، حدد المعطيات، ثم عوّض بوحدات متوافقة.</p></div></div>
+          <div class="grid-2">
+            <div class="soft-card"><h3>1) اقرأ الفكرة</h3><p>كل صفحة فيها الفكرة الأساسية والقانون والرموز المهمة، من غير حشو.</p></div>
+            <div class="soft-card"><h3>2) جاوب قبل ما تكشف</h3><p>تحت كل موضوع سؤال قصير. حاول تحله ثم افتح «الإجابة وليه» للمراجعة.</p></div>
+            <div class="soft-card"><h3>3) راجع الوحدات</h3><p>في قانون الغاز المثالي، استخدم درجة الحرارة بالكلفن. ولو الضغط بالكيلوباسكال والحجم بالمتر المكعب وR بالكيلوجول لكل كجم كلفن، تكون النتيجة بالكيلوباسكال.</p></div>
+            <div class="soft-card"><h3>4) اختبر نفسك</h3><p>الكويز في النهاية يعتمد على القوانين والمفاهيم الموجودة في الصبورة، مع تغيير أرقام مسائل التدريب.</p></div>
+          </div>
+          <div class="tip">المرجع الأساسي في هذا الملخص هو ملف الصبورة المرفق. استخدمت المذكرة المصورة لفهم أسلوب ترتيب خطوات الحل. الأرقام غير الواضحة في تصوير الجداول لا يتم تخمينها.</div>
+          <div class="page-footer"><small>ابدأ من القانون العام للغاز المثالي.</small><div class="pager"><button data-prev disabled>السابق</button><button data-next>التالي ←</button></div></div>
+        </div>
+      </section>
+
+      <section class="page active" id="perfect-gas" data-title="Perfect Gas">
+        <div class="panel">
+          <div class="page-head"><div class="page-icon">PV</div><div><div class="page-kicker">PAGE 01 · BOARD P. 1–3</div><h2>Perfect Gas — قانون الغاز المثالي</h2><p class="page-desc">الفكرة: ربط الضغط والحجم ودرجة الحرارة وكتلة الغاز وثابت الغاز.</p></div></div>
+          <div class="formula">PV = mRT<small>Ideal-gas equation</small></div>
+          <div class="grid-2">
+            <div class="soft-card"><h3>معاني الرموز</h3><p><span class="tag">P</span> الضغط · <span class="tag">V</span> الحجم الكلي · <span class="tag">m</span> الكتلة · <span class="tag">R</span> ثابت الغاز النوعي · <span class="tag">T</span> درجة الحرارة المطلقة.</p></div>
+            <div class="soft-card"><h3>ثابت الغاز النوعي</h3><div class="mathline">R = Rᵤ / M</div><p>في الصبورة: الثابت العام للغازات <b>Rᵤ = 8314.6</b>، ثم يُقسم على الوزن الجزيئي M للحصول على R النوعي بوحداته المتوافقة.</p></div>
+          </div>
+          <div class="soft-card"><h3>لو كتلة الغاز ثابتة بين حالتين</h3><div class="formula light">P₁V₁ / T₁ = P₂V₂ / T₂</div><p>استخدم العلاقة لما الغاز نفسه ينتقل من حالة (1) لحالة (2) من غير تغيير كتلته. لازم T₁ وT₂ يكونوا بالكلفن.</p></div>
+          <div class="table-wrap"><table><thead><tr><th>غاز الهواء كما في الصبورة</th><th>القيمة</th><th>الوحدة</th></tr></thead><tbody><tr><td>R</td><td>287</td><td>J/(kg·K) = 0.287 kJ/(kg·K)</td></tr><tr><td>Cᵥ</td><td>718</td><td>J/(kg·K)</td></tr><tr><td>Cₚ</td><td>1005</td><td>J/(kg·K)</td></tr><tr><td>k = Cₚ/Cᵥ</td><td>1.4 تقريبًا</td><td>بلا وحدة</td></tr></tbody></table></div>
+          <div class="tip">قبل التعويض: حوّل °C إلى K بالعلاقة <span class="mathline" style="display:inline-block;margin:0 4px">T(K) = T(°C) + 273</span>، وراجع توافق الوحدات.</div>
+          <details class="answer-box"><summary>سؤال مراجعة: خزان حجمه 0.55 m³ يحتوي على 3.8 kg من الهواء عند 27°C. احسب الضغط المطلق، إذا كان R = 0.287 kJ/(kg·K).</summary><div class="answer-content"><ol class="steps"><li>حوّل الحرارة: <div class="mathline">T = 27 + 273 = 300 K</div></li><li>استخدم قانون الغاز المثالي وحل للضغط: <div class="mathline">P = mRT / V</div></li><li>عوّض: <div class="mathline">P = (3.8 × 0.287 × 300) / 0.55 = 594.9 kPa</div></li></ol><p><b>الإجابة:</b> الضغط المطلق ≈ <b>594.9 kPa</b>.</p><p><b>ليه؟</b> لأن المعطيات تشمل الكتلة والحجم ودرجة الحرارة وثابت الغاز؛ إذن قانون <span dir="ltr">PV=mRT</span> هو الأنسب، ولازم الحرارة تكون مطلقة.</p></div></details>
+          <div class="page-footer"><small>مصدر الفكرة: الصبورة، الصفحات 1–3.</small><div class="pager"><button data-prev>السابق</button><button data-next>التالي ←</button></div></div>
+        </div>
+      </section>
+
+      <section class="page" id="heat-energy" data-title="Heat & Energy">
+        <div class="panel">
+          <div class="page-head"><div class="page-icon">ΔU</div><div><div class="page-kicker">PAGE 02 · BOARD P. 1–2</div><h2>Heat, Specific Heat & Energy</h2><p class="page-desc">فرّق بين الحرارة اللازمة لتغيير درجة الحرارة وبين الخواص المرتبطة بالطاقة.</p></div></div>
+          <div class="grid-2">
+            <div class="soft-card"><h3>Sensible heat</h3><p>حرارة تغيّر درجة حرارة المادة من غير أن يكون التغيير المقصود هو تغيير الحالة.</p><div class="formula">Q = mc(T₂ − T₁)</div><p class="footnote">c: الحرارة النوعية المناسبة للعملية.</p></div>
+            <div class="soft-card"><h3>Latent heat</h3><p>حرارة مرتبطة بتغيير حالة المادة؛ أثناء التحول عند التشبع يمكن أن تتغير الحالة من غير ارتفاع درجة الحرارة.</p><div class="tip">في جزء البخار، راقب هل المادة داخل منطقة التشبع أم خارجها.</div></div>
+          </div>
+          <div class="grid-2">
+            <div class="soft-card"><h3>Change in internal energy</h3><div class="formula">ΔU = mCᵥΔT</div><p>للغاز المثالي وفق علاقة الصبورة، التغير يعتمد على الكتلة وCᵥ والتغير في درجة الحرارة.</p></div>
+            <div class="soft-card"><h3>Change in enthalpy</h3><div class="formula">ΔH = mCₚΔT</div><p>نستخدم Cₚ في علاقة تغير الإنثالبي المكتوبة في الصبورة.</p></div>
+          </div>
+          <div class="grid-2">
+            <div class="soft-card"><h3>العلاقة بين Cₚ وCᵥ</h3><div class="formula light">R = Cₚ − Cᵥ</div></div>
+            <div class="soft-card"><h3>Specific heat ratio</h3><div class="formula light">k = Cₚ / Cᵥ</div></div>
+          </div>
+          <div class="soft-card"><h3>Work & Entropy</h3><div class="formula">W = ∫ P dV</div><p>شغل الحدود يُمثَّل بالمساحة تحت المسار على مخطط P–V. إذا كان الحجم ثابتًا فـ dV = 0، وبالتالي شغل الحدود يساوي صفرًا.</p><div class="formula light">ΔS = Qᵣₑᵥ / T</div><p class="footnote">صيغة Q/T المكتوبة في الصبورة تُستخدم هنا لانتقال حرارة عكوس عند درجة حرارة مطلقة ثابتة.</p></div>
+          <details class="answer-box"><summary>سؤال مراجعة: كتلة هواء 2.5 kg ارتفعت حرارتها من 290 K إلى 350 K. إذا كان Cᵥ = 0.718 kJ/(kg·K)، احسب ΔU.</summary><div class="answer-content"><ol class="steps"><li>احسب فرق الحرارة: <div class="mathline">ΔT = 350 − 290 = 60 K</div></li><li>استخدم علاقة الطاقة الداخلية: <div class="mathline">ΔU = mCᵥΔT</div></li><li>عوّض: <div class="mathline">ΔU = 2.5 × 0.718 × 60 = 107.7 kJ</div></li></ol><p><b>الإجابة:</b> <span dir="ltr">ΔU = 107.7 kJ</span>.</p><p><b>ليه؟</b> المطلوب تغير الطاقة الداخلية للغاز، ولذلك نستخدم Cᵥ وليس Cₚ.</p></div></details>
+          <div class="page-footer"><small>مصدر الفكرة: الصبورة، الصفحتان 1–2.</small><div class="pager"><button data-prev>السابق</button><button data-next>التالي ←</button></div></div>
+        </div>
+      </section>
+
+      <section class="page" id="processes" data-title="Processes">
+        <div class="panel">
+          <div class="page-head"><div class="page-icon">↗</div><div><div class="page-kicker">PAGE 03 · BOARD P. 4</div><h2>Thermodynamic Processes</h2><p class="page-desc">العملية هي انتقال النظام من State إلى State أخرى. أهم مفتاح في السؤال هو الخاصية الثابتة.</p></div></div>
+          <div class="table-wrap"><table><thead><tr><th>العملية</th><th>الشرط الثابت</th><th>طريقة التعرّف عليها</th></tr></thead><tbody>
+            <tr><td><b>Isochoric</b></td><td>V = constant</td><td>الحجم لا يتغير</td></tr>
+            <tr><td><b>Isobaric</b></td><td>P = constant</td><td>الضغط ثابت</td></tr>
+            <tr><td><b>Isothermal</b></td><td>T = constant</td><td>درجة الحرارة ثابتة</td></tr>
+            <tr><td><b>Adiabatic</b></td><td>Q = 0</td><td>لا يوجد انتقال حرارة</td></tr>
+            <tr><td><b>Polytropic</b></td><td>PVⁿ = constant</td><td>العلاقة تُحدَّد بالأس n في السؤال</td></tr>
+          </tbody></table></div>
+          <figure class="diagram"><svg viewBox="0 0 650 275" role="img" aria-label="مخطط ضغط وحجم يوضح المساحة تحت مسار العملية">
+            <defs><marker id="arrowPV" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#28435d"/></marker></defs>
+            <line x1="92" y1="225" x2="570" y2="225" stroke="#28435d" stroke-width="2" marker-end="url(#arrowPV)"/><line x1="92" y1="225" x2="92" y2="32" stroke="#28435d" stroke-width="2" marker-end="url(#arrowPV)"/>
+            <text x="570" y="255" fill="#28435d" font-size="15" text-anchor="end">V</text><text x="70" y="35" fill="#28435d" font-size="15" text-anchor="middle">P</text>
+            <path d="M145 82 C210 90 275 120 360 160 L360 225 L145 225 Z" fill="#b7eee4" opacity=".72"/><path d="M145 82 C210 90 275 120 360 160" fill="none" stroke="#087e73" stroke-width="4" stroke-linecap="round"/>
+            <line x1="145" y1="82" x2="145" y2="225" stroke="#95a7b8" stroke-dasharray="5 5"/><line x1="360" y1="160" x2="360" y2="225" stroke="#95a7b8" stroke-dasharray="5 5"/>
+            <text x="252" y="195" fill="#075c55" font-size="14" font-weight="bold" text-anchor="middle">Area = Boundary Work</text><text x="143" y="65" fill="#28435d" font-size="13">State 1</text><text x="363" y="148" fill="#28435d" font-size="13">State 2</text>
+          </svg><figcaption>توضيح تخطيطي: المساحة تحت المسار على مخطط P–V تمثّل شغل الحدود.</figcaption></figure>
+          <div class="tip">طريقة سريعة: لو السؤال قال «الحجم ثابت» اختار Isochoric فورًا؛ ولو قال «لا يوجد انتقال حرارة» فهذه Adiabatic.</div>
+          <details class="answer-box"><summary>سؤال مراجعة: غاز انتقل من حالة لأخرى مع ثبات الحجم. ما نوع العملية؟ وما شغل الحدود؟</summary><div class="answer-content"><p><b>الإجابة:</b> العملية <b>Isochoric</b>، وشغل الحدود <b>W = 0</b>.</p><p><b>ليه؟</b> لأن الحجم لا يتغير، إذن dV = 0 طوال العملية. وبما أن <span dir="ltr">W = ∫P dV</span>، فالتكامل يساوي صفرًا.</p></div></details>
+          <div class="page-footer"><small>مصدر الفكرة: الصبورة، الصفحة 4.</small><div class="pager"><button data-prev>السابق</button><button data-next>التالي ←</button></div></div>
+        </div>
+      </section>
+
+      <section class="page" id="steam-states" data-title="Steam Curve & States">
+        <div class="panel">
+          <div class="page-head"><div class="page-icon">H₂O</div><div><div class="page-kicker">PAGE 04 · BOARD P. 5–6</div><h2>Steam Curve — حالات الماء والبخار</h2><p class="page-desc">شكل القبة يقسم الحالات إلى سائل مضغوط، خليط مشبع، وبخار محمص.</p></div></div>
+          <figure class="diagram"><svg viewBox="0 0 650 320" role="img" aria-label="مخطط تخطيطي لقبة التشبع على مخطط درجة الحرارة والإنتروبي">
+            <defs><marker id="arrowTS" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#28435d"/></marker></defs>
+            <line x1="70" y1="270" x2="595" y2="270" stroke="#28435d" stroke-width="2" marker-end="url(#arrowTS)"/><line x1="70" y1="270" x2="70" y2="28" stroke="#28435d" stroke-width="2" marker-end="url(#arrowTS)"/>
+            <text x="598" y="296" fill="#28435d" font-size="15" text-anchor="end">s</text><text x="48" y="33" fill="#28435d" font-size="15" text-anchor="middle">T</text>
+            <path d="M170 250 C206 200 230 105 318 70 C406 103 430 200 466 250" fill="none" stroke="#0a9688" stroke-width="4"/>
+            <path d="M170 250 C206 200 230 105 318 70 C406 103 430 200 466 250 L170 250 Z" fill="#bceee5" opacity=".55"/>
+            <line x1="318" y1="70" x2="318" y2="250" stroke="#82aaa8" stroke-dasharray="5 5"/>
+            <text x="175" y="115" fill="#38556a" font-size="14" text-anchor="middle">Subcooled</text><text x="317" y="170" fill="#086d63" font-size="14" font-weight="bold" text-anchor="middle">Mixture</text><text x="497" y="115" fill="#38556a" font-size="14" text-anchor="middle">Superheated</text>
+            <text x="190" y="263" fill="#28435d" font-size="12" text-anchor="middle">Saturated liquid</text><text x="438" y="263" fill="#28435d" font-size="12" text-anchor="middle">Saturated vapor</text><circle cx="318" cy="70" r="5" fill="#f0b642" stroke="#fff" stroke-width="2"/><text x="318" y="50" fill="#6a4c12" font-size="12" text-anchor="middle">Critical point</text>
+          </svg><figcaption>رسم توضيحي للتقسيمات المذكورة في الصبورة، وليس مخطط خواص بمقياس رسم.</figcaption></figure>
+          <div class="grid-2">
+            <div class="soft-card"><h3>1 · Subcooled / Compressed Liquid</h3><p>الماء ما زال سائلًا ودرجة حرارته أقل من درجة التشبع عند الضغط المعطى.</p><div class="formula light">T &lt; Tₛₐₜ</div></div>
+            <div class="soft-card"><h3>2 · Saturated Liquid</h3><p>السائل وصل إلى حالة التشبع، لكنه لم يتحول بعد إلى بخار بالكامل.</p><div class="formula light">x = 0</div></div>
+            <div class="soft-card"><h3>3 · Saturated Vapor</h3><p>وصلت المادة إلى حالة البخار المشبع؛ لا يوجد سائل متبقٍ في الحالة المثالية لهذه النقطة.</p><div class="formula light">x = 1</div></div>
+            <div class="soft-card"><h3>4 · Superheated Vapor</h3><p>درجة حرارة البخار أعلى من درجة التشبع عند الضغط نفسه.</p><div class="formula light">T &gt; Tₛₐₜ</div></div>
+          </div>
+          <div class="soft-card"><h3>Wet / Saturated Mixture</h3><p>داخل قبة التشبع توجد مرحلة خليط من سائل وبخار معًا. هنا نستخدم درجة الجفاف x لوصف نسبة كتلة البخار في الخليط، وتكون بين 0 و1.</p><div class="formula">0 &lt; x &lt; 1</div></div>
+          <details class="answer-box"><summary>سؤال مراجعة: عند ضغط معيّن، إذا كانت Tₛₐₜ = 180°C ودرجة حرارة البخار 220°C، فما حالة البخار؟</summary><div class="answer-content"><p><b>الإجابة:</b> Superheated Vapor.</p><p><b>ليه؟</b> لأن درجة حرارة البخار أعلى من درجة التشبع عند نفس الضغط: 220°C &gt; 180°C.</p></div></details>
+          <div class="page-footer"><small>مصدر الفكرة: الصبورة، الصفحتان 5–6.</small><div class="pager"><button data-prev>السابق</button><button data-next>التالي ←</button></div></div>
+        </div>
+      </section>
+
+      <section class="page" id="steam-tables" data-title="Steam Tables">
+        <div class="panel">
+          <div class="page-head"><div class="page-icon">Tbl</div><div><div class="page-kicker">PAGE 05 · BOARD P. 7–9, 11</div><h2>إزاي تقرأ Steam Tables؟</h2><p class="page-desc">حدّد المنطقة أولًا؛ بعدها اختار الجدول الصحيح، ثم استخرج الخواص المطلوبة.</p></div></div>
+          <ol class="steps">
+            <li><b>حدد حالة المادة</b><br/>استخدم معلومات الضغط P ودرجة الحرارة T، وقارن درجة الحرارة بدرجة التشبع عند الضغط نفسه إذا كانت متاحة.</li>
+            <li><b>اختار نوع الجدول</b><br/>للمنطقة المشبعة استخدم Saturation Table؛ للبخار المحمص استخدم Superheated Table؛ وللسائل المضغوط/دون التشبع ارجع لجدول المنطقة المناسب كما في الصبورة.</li>
+            <li><b>اقرأ العمود الصحيح</b><br/><span dir="ltr">f</span> يعني خواص السائل المشبع، و<span dir="ltr">g</span> يعني خواص البخار المشبع، و<span dir="ltr">fg</span> هو الفرق بينهما للخاصية المكتوبة.</li>
+            <li><b>اكتب الوحدات</b><br/>مثلًا: h بوحدة kJ/kg، وs غالبًا بوحدة kJ/(kg·K)، وv بوحدة m³/kg. بعض الجداول تعرض v بوحدة dm³/kg، فانتبه للتحويل.</li>
+          </ol>
+          <div class="table-wrap"><table><thead><tr><th>الرمز</th><th>المعنى</th><th>طريقة الاستخدام</th></tr></thead><tbody>
+            <tr><td>P</td><td>Pressure</td><td>الضغط</td></tr><tr><td>T</td><td>Temperature</td><td>درجة الحرارة</td></tr><tr><td>v</td><td>Specific volume</td><td>الحجم النوعي</td></tr><tr><td>u</td><td>Internal energy</td><td>الطاقة الداخلية النوعية</td></tr><tr><td>h</td><td>Enthalpy</td><td>الإنثالبي النوعي</td></tr><tr><td>s</td><td>Entropy</td><td>الإنتروبي النوعي</td></tr>
+          </tbody></table></div>
+          <div class="formula">u = h − Pv<small>تذكير من تعريف الإنثالبي، مع توافق الوحدات</small></div>
+          <div class="tip">في وحدات kPa وm³/kg، حاصل Pv يساوي kJ/kg. وفي مثال الصبورة للمنطقة المضغوطة، قيمة v مكتوبة بوحدة dm³/kg ثم تحوّلت إلى m³/kg بضربها في 10⁻³.</div>
+          <div class="caution">بعض أرقام جداول البخار في الصور غير واضحة تمامًا؛ لا تخمّن أي رقم غير مقروء. ارجع لجدول الخواص الأصلي عند الحاجة لقيمة رقمية دقيقة.</div>
+          <details class="answer-box"><summary>سؤال مراجعة: عند تحديد الحالة Saturated Liquid، هل نأخذ خواص f أم g من جدول التشبع؟</summary><div class="answer-content"><p><b>الإجابة:</b> نأخذ خواص <b>f</b>.</p><p><b>ليه؟</b> لأن الرمز f في الصبورة يشير إلى السائل المشبع، بينما g يشير إلى البخار المشبع.</p></div></details>
+          <div class="page-footer"><small>مصدر الفكرة: الصبورة، الصفحات 7–9 و11.</small><div class="pager"><button data-prev>السابق</button><button data-next>التالي ←</button></div></div>
+        </div>
+      </section>
+
+      <section class="page" id="quality" data-title="Quality & Mixture">
+        <div class="panel">
+          <div class="page-head"><div class="page-icon">x</div><div><div class="page-kicker">PAGE 06 · BOARD P. 9–10</div><h2>Quality (Dryness Fraction)</h2><p class="page-desc">درجة الجفاف x بتعبّر عن نسبة كتلة البخار إلى الكتلة الكلية في الخليط المشبع.</p></div></div>
+          <div class="formula">x = mᵥ / (mᵥ + mₗ)</div>
+          <p>في الخليط المشبع، جزء من الكتلة بخار وجزء سائل؛ لذلك x ليست درجة حرارة ولا نسبة حجم، بل نسبة كتلة البخار.</p>
+          <div class="formula-row">
+            <div class="formula light">Saturated liquid: x = 0</div>
+            <div class="formula light">Saturated vapor: x = 1</div>
+          </div>
+          <h3>خواص الخليط المشبع</h3>
+          <div class="formula">v = vᶠ + x(vᵍ − vᶠ)</div>
+          <div class="formula">h = hᶠ + xhᶠᵍ = (1−x)hᶠ + xhᵍ</div>
+          <div class="formula">u = uᶠ + xuᶠᵍ</div>
+          <div class="formula">s = sᶠ + xsᶠᵍ</div>
+          <div class="tip">الرمز fg يعبّر عن الفرق بين قيمة البخار المشبع وقيمة السائل المشبع، مثل <span dir="ltr">hfg = hg − hf</span>.</div>
+          <details class="answer-box"><summary>سؤال مراجعة: خليط مشبع له x = 0.40، و hᶠ = 900 kJ/kg، و hᶠᵍ = 1880 kJ/kg. احسب h.</summary><div class="answer-content"><ol class="steps"><li>اختار علاقة الإنثالبي للخليط: <div class="mathline">h = hᶠ + xhᶠᵍ</div></li><li>عوّض القيم المعطاة في السؤال: <div class="mathline">h = 900 + 0.40 × 1880</div></li><li>احسب: <div class="mathline">h = 1652 kJ/kg</div></li></ol><p><b>الإجابة:</b> <span dir="ltr">h = 1652 kJ/kg</span>.</p><p><b>ليه؟</b> لأن الحالة خليط مشبع، فنحسب الخاصية من قيمة السائل المشبع مضافًا إليها x في فرق الخاصية بين البخار والسائل.</p></div></details>
+          <div class="page-footer"><small>مصدر الفكرة: الصبورة، الصفحتان 9–10.</small><div class="pager"><button data-prev>السابق</button><button data-next>التالي ←</button></div></div>
+        </div>
+      </section>
+
+      <section class="page" id="worked-examples" data-title="Examples with Why">
+        <div class="panel">
+          <div class="page-head"><div class="page-icon">✎</div><div><div class="page-kicker">PAGE 07 · SOLVE WITH A METHOD</div><h2>أمثلة محلولة — والإجابة وليه</h2><p class="page-desc">خطوات الحل مبنية على قوانين الصبورة، وطريقة تنظيم المعطيات مستفادة من صور المذكرة.</p></div></div>
+          <div class="soft-card"><h3>Example 1 · Perfect Gas</h3><p><b>المسألة:</b> وعاء حجمه 0.55 m³ يحتوي على 3.8 kg من الهواء عند 27°C. احسب الضغط المطلق باستخدام R = 0.287 kJ/(kg·K).</p><details class="answer-box"><summary>إظهار الحل خطوة بخطوة</summary><div class="answer-content"><ol class="steps"><li>حوّل الحرارة إلى كلفن: <div class="mathline">T = 27 + 273 = 300 K</div></li><li>رتّب القانون لإيجاد الضغط: <div class="mathline">P = mRT/V</div></li><li>عوّض بوحدات متوافقة: <div class="mathline">P = (3.8 × 0.287 × 300) / 0.55 = 594.9 kPa</div></li></ol><p><b>ليه الخطوات دي؟</b> لأن قانون الغاز يحتاج درجة حرارة مطلقة، ومع اختيار R بوحدة kJ/(kg·K) يتوافق الضغط الناتج مع kPa عند استخدام الحجم بالمتر المكعب.</p></div></details></div>
+          <div class="soft-card" style="margin-top:14px"><h3>Example 2 · Enthalpy Change</h3><p><b>المسألة:</b> كتلة هواء 1.8 kg ارتفعت حرارتها من 290 K إلى 410 K. إذا كان Cₚ = 1.005 kJ/(kg·K)، احسب ΔH.</p><details class="answer-box"><summary>إظهار الحل خطوة بخطوة</summary><div class="answer-content"><ol class="steps"><li><div class="mathline">ΔT = 410 − 290 = 120 K</div></li><li><div class="mathline">ΔH = mCₚΔT</div></li><li><div class="mathline">ΔH = 1.8 × 1.005 × 120 = 217.08 kJ</div></li></ol><p><b>الإجابة:</b> ΔH = 217.08 kJ. <b>ليه؟</b> لأن المطلوب تغير الإنثالبي، وعلاقته في الصبورة تستخدم Cₚ.</p></div></details></div>
+          <div class="soft-card" style="margin-top:14px"><h3>Example 3 · Steam Mixture</h3><p><b>المسألة:</b> خليط مشبع له x = 0.35، و hᶠ = 880 kJ/kg، و hᶠᵍ = 1900 kJ/kg. احسب h.</p><details class="answer-box"><summary>إظهار الحل خطوة بخطوة</summary><div class="answer-content"><ol class="steps"><li>العلاقة: <div class="mathline">h = hᶠ + xhᶠᵍ</div></li><li>التعويض: <div class="mathline">h = 880 + 0.35 × 1900</div></li><li>الناتج: <div class="mathline">h = 1545 kJ/kg</div></li></ol><p><b>ليه؟</b> لأن الحالة خليط مشبع، والقيم hᶠ وhᶠᵍ معطاة في السؤال، فلا نحتاج تخمين قيم من جدول غير واضح.</p></div></details></div>
+          <div class="tip">قاعدة ثابتة في المسائل: اكتب Given، وحّد الوحدات، حدّد المطلوب، اختار القانون، ثم عوّض واحسب. ما تبدأش بالتعويض قبل ما تحدد نوع الحالة.</div>
+          <div class="page-footer"><small>هذه أمثلة تدريبية بأرقام مختلفة؛ ليست نقلًا حرفيًا لمسائل المذكرة.</small><div class="pager"><button data-prev>السابق</button><button data-next>التالي ←</button></div></div>
+        </div>
+      </section>
+
+      <section class="page" id="quiz" data-title="Final Quiz">
+        <div class="panel">
+          <div class="page-head"><div class="page-icon">?</div><div><div class="page-kicker">PAGE 08 · TEST YOURSELF</div><h2>Final Quiz — اختبر فهمك</h2><p class="page-desc">اختار إجابة واحدة لكل سؤال، ثم اضغط «صحّح الكويز» لعرض الدرجة والتفسير. الأسئلة على أفكار الصبورة مع تغيير أرقام التدريب.</p></div></div>
+          <form id="quizForm">
+            <fieldset class="quiz-q" data-answer="0" data-explanation="P = mRT/V = (3.6 × 0.287 × 300) / 0.50 = 619.92 kPa، أي تقريبًا 619.9 kPa."><legend><span class="q-num">1</span> غاز هواء كتلته 3.6 kg داخل حجم 0.50 m³ عند 300 K. إذا R = 0.287 kJ/(kg·K)، فما الضغط؟</legend><div class="options"><label class="option"><input type="radio" name="q1" value="0"> 619.9 kPa</label><label class="option"><input type="radio" name="q1" value="1"> 519.9 kPa</label><label class="option"><input type="radio" name="q1" value="2"> 309.96 kPa</label><label class="option"><input type="radio" name="q1" value="3"> 719.9 kPa</label></div><div class="feedback"></div></fieldset>
+            <fieldset class="quiz-q" data-answer="1" data-explanation="ΔU = mCᵥΔT = 2.5 × 0.718 × (350 − 290) = 107.7 kJ."><legend><span class="q-num">2</span> كتلة 2.5 kg، وCᵥ = 0.718 kJ/(kg·K)، ودرجة الحرارة ارتفعت من 290 إلى 350 K. ما ΔU؟</legend><div class="options"><label class="option"><input type="radio" name="q2" value="0"> 71.8 kJ</label><label class="option"><input type="radio" name="q2" value="1"> 107.7 kJ</label><label class="option"><input type="radio" name="q2" value="2"> 150.2 kJ</label><label class="option"><input type="radio" name="q2" value="3"> 43.08 kJ</label></div><div class="feedback"></div></fieldset>
+            <fieldset class="quiz-q" data-answer="2" data-explanation="R = Cₚ − Cᵥ = 1.005 − 0.718 = 0.287 kJ/(kg·K)، وk = Cₚ/Cᵥ ≈ 1.40."><legend><span class="q-num">3</span> إذا Cₚ = 1.005 وCᵥ = 0.718 kJ/(kg·K)، فما الزوج الصحيح لـR وk؟</legend><div class="options"><label class="option"><input type="radio" name="q3" value="0"> R=1.723 ، k=0.71</label><label class="option"><input type="radio" name="q3" value="1"> R=0.718 ، k=1.005</label><label class="option"><input type="radio" name="q3" value="2"> R=0.287 ، k≈1.40</label><label class="option"><input type="radio" name="q3" value="3"> R=0.287 ، k≈0.71</label></div><div class="feedback"></div></fieldset>
+            <fieldset class="quiz-q" data-answer="0" data-explanation="Isochoric تعني أن الحجم ثابت: V = constant."><legend><span class="q-num">4</span> أي عملية يحدث فيها الحجم بثبات؟</legend><div class="options"><label class="option"><input type="radio" name="q4" value="0"> Isochoric</label><label class="option"><input type="radio" name="q4" value="1"> Isobaric</label><label class="option"><input type="radio" name="q4" value="2"> Isothermal</label><label class="option"><input type="radio" name="q4" value="3"> Polytropic دائمًا</label></div><div class="feedback"></div></fieldset>
+            <fieldset class="quiz-q" data-answer="3" data-explanation="Adiabatic تعني عدم انتقال حرارة خلال العملية؛ لذلك Q = 0."><legend><span class="q-num">5</span> الشرط المميز للعملية Adiabatic هو:</legend><div class="options"><label class="option"><input type="radio" name="q5" value="0"> T = 0</label><label class="option"><input type="radio" name="q5" value="1"> P = 0</label><label class="option"><input type="radio" name="q5" value="2"> V = constant</label><label class="option"><input type="radio" name="q5" value="3"> Q = 0</label></div><div class="feedback"></div></fieldset>
+            <fieldset class="quiz-q" data-answer="1" data-explanation="شغل الحدود W = ∫P dV، وتمثّله المساحة تحت المسار على مخطط الضغط والحجم."><legend><span class="q-num">6</span> المساحة تحت مسار العملية على مخطط P–V تمثّل:</legend><div class="options"><label class="option"><input type="radio" name="q6" value="0"> درجة الحرارة فقط</label><label class="option"><input type="radio" name="q6" value="1"> Boundary work</label><label class="option"><input type="radio" name="q6" value="2"> الكتلة</label><label class="option"><input type="radio" name="q6" value="3"> الحرارة النوعية</label></div><div class="feedback"></div></fieldset>
+            <fieldset class="quiz-q" data-answer="2" data-explanation="h = hᶠ + xhᶠᵍ = 850 + 0.25 × 1950 = 1337.5 kJ/kg."><legend><span class="q-num">7</span> خليط مشبع: x=0.25، وhᶠ=850، وhᶠᵍ=1950 kJ/kg. احسب h.</legend><div class="options"><label class="option"><input type="radio" name="q7" value="0"> 900 kJ/kg</label><label class="option"><input type="radio" name="q7" value="1"> 1287.5 kJ/kg</label><label class="option"><input type="radio" name="q7" value="2"> 1337.5 kJ/kg</label><label class="option"><input type="radio" name="q7" value="3"> 1950 kJ/kg</label></div><div class="feedback"></div></fieldset>
+            <fieldset class="quiz-q" data-answer="0" data-explanation="عند x=0 تكون كتلة البخار صفرًا من الكتلة الكلية؛ إذن الحالة Saturated Liquid."><legend><span class="q-num">8</span> في حالة Saturated Liquid، قيمة x تساوي:</legend><div class="options"><label class="option"><input type="radio" name="q8" value="0"> 0</label><label class="option"><input type="radio" name="q8" value="1"> 0.5</label><label class="option"><input type="radio" name="q8" value="2"> 1</label><label class="option"><input type="radio" name="q8" value="3"> لا يمكن تحديدها</label></div><div class="feedback"></div></fieldset>
+            <fieldset class="quiz-q" data-answer="1" data-explanation="بما أن T=220°C أكبر من Tₛₐₜ=180°C عند نفس الضغط، فالحالة Superheated Vapor."><legend><span class="q-num">9</span> عند ضغط معين Tₛₐₜ=180°C، والبخار حرارته 220°C. ما الحالة؟</legend><div class="options"><label class="option"><input type="radio" name="q9" value="0"> Subcooled liquid</label><label class="option"><input type="radio" name="q9" value="1"> Superheated vapor</label><label class="option"><input type="radio" name="q9" value="2"> Saturated liquid</label><label class="option"><input type="radio" name="q9" value="3"> لا يمكن أن تكون بخارًا</label></div><div class="feedback"></div></fieldset>
+            <fieldset class="quiz-q" data-answer="3" data-explanation="في Isochoric يكون الحجم ثابتًا، لذلك dV=0، ومن W=∫P dV يكون شغل الحدود صفرًا."><legend><span class="q-num">10</span> في عملية Isochoric، ما شغل الحدود؟</legend><div class="options"><label class="option"><input type="radio" name="q10" value="0"> أكبر قيمة ممكنة</label><label class="option"><input type="radio" name="q10" value="1"> يعتمد فقط على Cp</label><label class="option"><input type="radio" name="q10" value="2"> يساوي Q دائمًا</label><label class="option"><input type="radio" name="q10" value="3"> صفر</label></div><div class="feedback"></div></fieldset>
+            <div class="quiz-actions"><button type="button" class="btn btn-primary" id="gradeQuiz">صحّح الكويز</button><button type="reset" class="btn" style="background:#eef3f8;color:#35485e">ابدأ من جديد</button><span class="score" id="scoreText" aria-live="polite"></span></div>
+          </form>
+          <div class="tip">كل إجابة معها تفسير مختصر بعد التصحيح. راجع الصفحات المرتبطة بالسؤال اللي أخطأت فيه، وبعدها جرّب مرة ثانية.</div>
+          <div class="page-footer"><small>With Eng Kareem · Thermodynamics Review</small><div class="pager"><button data-prev>السابق</button><button data-next disabled>انتهت المراجعة</button></div></div>
+        </div>
+      </section>
+    </div>
+  </main>
+  <div class="brand-footer">WITH ENG KAREEM · THERMODYNAMICS REVIEW</div>
+
+  <script>
+    (function(){
+      const pages = Array.from(document.querySelectorAll('.page'));
+      const navButtons = Array.from(document.querySelectorAll('.nav-btn'));
+      const progressFill = document.getElementById('progressFill');
+      const progressText = document.getElementById('progressText');
+      let currentIndex = Math.max(0, pages.findIndex(p => p.classList.contains('active')));
+      function showPage(id){
+        const targetIndex = pages.findIndex(p => p.id === id);
+        if(targetIndex < 0) return;
+        currentIndex = targetIndex;
+        pages.forEach((p,i)=>p.classList.toggle('active',i===currentIndex));
+        navButtons.forEach(b=>b.classList.toggle('active',b.dataset.page===id));
+        progressFill.style.width = ((currentIndex+1)/pages.length*100)+'%';
+        progressText.textContent = (currentIndex+1)+' / '+pages.length;
+        document.querySelectorAll('[data-prev]').forEach(b=>{ if(b.closest('.page')) b.disabled = currentIndex===0; });
+        document.querySelectorAll('[data-next]').forEach(b=>{ if(b.closest('.page')) b.disabled = currentIndex===pages.length-1; });
+        if(window.matchMedia('(max-width:1050px)').matches){
+          const contentTop = document.querySelector('.content').getBoundingClientRect().top + window.scrollY - 12;
+          window.scrollTo({top:contentTop,behavior:'smooth'});
+        }
+      }
+      navButtons.forEach(b=>b.addEventListener('click',()=>showPage(b.dataset.page)));
+      document.querySelectorAll('[data-go]').forEach(b=>b.addEventListener('click',()=>showPage(b.dataset.go)));
+      document.querySelectorAll('[data-next]').forEach(b=>b.addEventListener('click',()=>{if(currentIndex<pages.length-1)showPage(pages[currentIndex+1].id)}));
+      document.querySelectorAll('[data-prev]').forEach(b=>b.addEventListener('click',()=>{if(currentIndex>0)showPage(pages[currentIndex-1].id)}));
+      showPage(pages[currentIndex].id);
+
+      const quizForm = document.getElementById('quizForm');
+      const gradeButton = document.getElementById('gradeQuiz');
+      const scoreText = document.getElementById('scoreText');
+      gradeButton.addEventListener('click',function(){
+        const questions = Array.from(quizForm.querySelectorAll('.quiz-q'));
+        let correct = 0, answered = 0;
+        questions.forEach((q)=>{
+          const checked = q.querySelector('input[type="radio"]:checked');
+          const feedback = q.querySelector('.feedback');
+          feedback.className = 'feedback show';
+          if(!checked){
+            feedback.classList.add('wrong');
+            feedback.textContent = 'لسه ما اخترتش إجابة. ' + q.dataset.explanation;
+            return;
+          }
+          answered++;
+          if(checked.value === q.dataset.answer){
+            correct++;
+            feedback.classList.add('correct');
+            feedback.textContent = 'إجابة صحيحة ✓ ' + q.dataset.explanation;
+          } else {
+            feedback.classList.add('wrong');
+            feedback.textContent = 'الإجابة غير صحيحة. ' + q.dataset.explanation;
+          }
+        });
+        scoreText.textContent = 'درجتك: ' + correct + ' / ' + questions.length + ' · أجبت عن ' + answered + ' سؤال';
+      });
+      quizForm.addEventListener('reset',function(){
+        setTimeout(()=>{quizForm.querySelectorAll('.feedback').forEach(f=>{f.className='feedback';f.textContent='';});scoreText.textContent='';},0);
+      });
+    })();
+  </script>
+</body>
+</html>
